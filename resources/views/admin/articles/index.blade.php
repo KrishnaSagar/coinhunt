@@ -33,8 +33,8 @@
                             <td>{{$articles->created_at->diffForHumans()}}</td>
                             <td style="display: flex; flex-wrap: nowrap;">
                                 <a target="_blank" href="" title="Görüntüle" class="btn btn-sm btn-success mr-2"><i class="fa fa-eye"></i></a>
-                                <a href="{{url("/admin/categories/$articles->id/edit")}}" title="Düzenle" class="btn btn-sm btn-primary mr-2"><i class="fa fa-pen"></i></a>
-                                <form method="POST" action="{{url("/admin/categories/$articles->id")}}" title="Sil">
+                                <a href="{{url("/admin/articles/$articles->id/edit")}}" title="Düzenle" class="btn btn-sm btn-primary mr-2"><i class="fa fa-pen"></i></a>
+                                <form method="POST" action="{{url("/admin/articles/$articles->id")}}" title="Sil">
                                     @csrf
                                     @method("delete")
                                     <button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button>

@@ -44,7 +44,7 @@ class ArticleController extends Controller
         $article->content = $request->content;
         $article->keywords = $request->keywords;
         $article->slug = Str::slug($request->title);
-        $article->summary = Str::substr($request->content, 0, 100);;
+        $article->summary = Str::limit($request->content, 100);
         $article->descriptions = $request->descriptions;
         if($request->file("image")){
             $path = Storage::putFile('articles', new File($request->image));
@@ -59,15 +59,45 @@ class ArticleController extends Controller
 
     }
 
-    public function edit(){
+    public function edit($id){
+        $article = Article::findOrFail($id);
+        $categories = Category::orderBy("id","DESC")->get();
+
+        return view("admin.articles.update",compact("article","categories"));
+    }
+
+    public function update(Request $request,$id){
+
+        $article = Article::findOrFail($id);
+
+        if($request->file("image")){
+            if(Storage::path($article->image)){
+                Storage::delete($article->image);
+            }
+            $path = Storage::putFile("articles",new File($request->image));
+            $article->image = $path;
+        }
+
+        $article->title = $request->title;
+        $article->content = $request->content;
+        $article->category_id = $request->category_id;
+        $article->slug = Str::slug($request->title);
+        $article->keywords = $request->keywords;
+        $article->descriptions = $request->descriptions;
+        $article->summary = Str::substr($request->content,0,100);
+        $article->save();
+
+        return redirect("/admin/articles")->with("success","Makale başarılı bir şekilde güncellenmiştir.");
 
     }
 
-    public function update(){
+    public function destroy(Request $request){
+        $article = Article::findOrFail($request->id);
+        if(Storage::path($article->image)){
+            Storage::delete($article->image);
+        }
+        $article->delete();
 
-    }
-
-    public function destroy(){
-
+        return redirect()->back()->with("success","Makale başarılı bir şekilde silindi");
     }
 }

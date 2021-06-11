@@ -46,12 +46,12 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link  @if(Request::segment(2)=='categories') in @else collapsed @endif" href="#" data-toggle="collapse" data-target="#collapseTwo"
-               aria-expanded="true" aria-controls="collapseTwo">
+            <a class="nav-link  @if(Request::segment(2)=='categories') in @else collapsed @endif" href="#" data-toggle="collapse" data-target="#collapseThree"
+               aria-expanded="true" aria-controls="collapseThree">
                 <i class="fas fa-fw fa-edit"></i>
                 <span>Kategoriler</span>
             </a>
-            <div id="collapseTwo" class="collapse  @if(Request::segment(2)=='categories') show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div id="collapseThree" class="collapse  @if(Request::segment(2)=='categories') show @endif" aria-labelledby="headingThree" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Kategori İşlemleri:</h6>
                     <a class="collapse-item @if(Request::segment(2)=='categories' and !Request::segment(3)) active @endif" href="{{url('/admin/categories')}}">Tüm Kategoriler</a>
@@ -62,12 +62,12 @@
 
 
         <li class="nav-item">
-            <a class="nav-link  @if(Request::segment(2)=='articles') in @else collapsed @endif" href="#" data-toggle="collapse" data-target="#collapseTwo"
+            <a class="nav-link  @if(Request::segment(2)=='articles') in @else collapsed @endif" href="#" data-toggle="collapse" data-target="#collapseFour"
                aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-edit"></i>
                 <span>Makaleler</span>
             </a>
-            <div id="collapseTwo" class="collapse  @if(Request::segment(2)=='articles') show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div id="collapseFour" class="collapse  @if(Request::segment(2)=='articles') show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Makale İşlemleri:</h6>
                     <a class="collapse-item @if(Request::segment(2)=='articles' and !Request::segment(3)) active @endif" href="{{url('/admin/articles')}}">Tüm Makaleler</a>
